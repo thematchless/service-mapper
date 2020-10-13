@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 interface IService {
   name: string;
@@ -7,29 +8,26 @@ interface IService {
   link: string;
 }
 
-const services: IService[] = [
-  {
-    icon: "http://image.tld",
-    link: "traefik.tld",
-    name: "Traefik",
-  },
-  {
-    icon: "http://image.tld",
-    link: "grafana.tld",
-    name: "Grafana",
-  },
-];
-
 const GridContainer: React.FC = () => {
+  const [services, setServices] = useState<IService[]>([]);
+
+  useEffect(() => {
+    const servicesJson = import("../services.json");
+
+    servicesJson.then((result) => {
+      setServices(result.default.services);
+    });
+  });
+
   const fallbackImage = (ev: any) => {
     ev.target.src = "/placeholder.png";
   };
 
   return (
     <GridContainerContainer>
-      {services.map((service) => {
+      {services.map((service, index) => {
         return (
-          <Grid href={service.link}>
+          <Grid key={index} href={service.link}>
             <GridIcon src={service.icon} onError={fallbackImage} />
             <GridName>{service.name}</GridName>
           </Grid>

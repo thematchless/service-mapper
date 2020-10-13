@@ -1,0 +1,14 @@
+{
+  "services": [
+    {
+      "icon": "http://image.tld",
+      "link": "traefik.tld",
+      "name": "Traefik"
+    },
+    {
+      "icon": "http://image.tld",
+      "link": "grafana.tld",
+      "name": "Grafana"
+    }
+  ]
+}
