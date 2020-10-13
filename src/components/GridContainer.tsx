@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface IService {
   name: string;
@@ -28,8 +29,18 @@ const GridContainer: React.FC = () => {
       {services.map((service, index) => {
         return (
           <Grid key={index} href={service.link}>
-            <GridIcon src={service.icon} onError={fallbackImage} />
-            <GridName>{service.name}</GridName>
+            <motion.div
+              initial={{ rotate: 180, scale: 0 }}
+              animate={{ rotate: 360, scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
+            >
+              <GridIcon src={service.icon} onError={fallbackImage} />
+              <GridName>{service.name}</GridName>
+            </motion.div>
           </Grid>
         );
       })}
