@@ -30,8 +30,11 @@ const GridContainer: React.FC = () => {
         return (
           <Grid key={index} href={service.link}>
             <motion.div
-              initial={{ rotate: 180, scale: 0 }}
-              animate={{ rotate: 360, scale: 1 }}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              whileTap={{
+                scale: 0.9,
+              }}
               transition={{
                 type: "spring",
                 stiffness: 260,
@@ -75,6 +78,12 @@ const Grid = styled.a`
   padding: 2rem;
   margin: 2rem 1rem;
   border-radius: 1.25rem;
+  text-decoration: none;
+  font-size: 1rem;
+
+  &:visited {
+    color: #000;
+  }
 
   &:hover {
     background-color: #ffa534;
