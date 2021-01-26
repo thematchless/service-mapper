@@ -11,7 +11,7 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
+          password: ${{ secrets.PAT_TOKEN }}
+          registry: ghcr.io
           repository: ${{ github.repository }}/service-mapper
           tags: latest, ${{ github.run_number }}
