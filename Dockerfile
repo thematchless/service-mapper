@@ -8,7 +8,7 @@ COPY package.json /app
 COPY package-lock.json /app
 
 RUN npm ci --silent
-RUN npm install react-scripts@3.4.3 -g --silent
+RUN npm install react-scripts@4.0.3 -g --silent
 COPY . ./
 RUN npm run build
 
